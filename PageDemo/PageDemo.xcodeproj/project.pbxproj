@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09F0BAF212B10C1700CBCD8A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F0BAF112B10C1700CBCD8A /* RootViewController.m */; };
+		09F0BAF712B111F700CBCD8A /* CreditsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F0BAF612B111F700CBCD8A /* CreditsViewController.m */; };
 		1D3623260D0F684500981E51 /* PageDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* PageDemoAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -18,6 +19,8 @@
 /* Begin PBXFileReference section */
 		09F0BAF012B10C1700CBCD8A /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		09F0BAF112B10C1700CBCD8A /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		09F0BAF512B111F700CBCD8A /* CreditsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditsViewController.h; sourceTree = "<group>"; };
+		09F0BAF612B111F700CBCD8A /* CreditsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditsViewController.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* PageDemoAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageDemoAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* PageDemoAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageDemoAppDelegate.m; sourceTree = "<group>"; };
@@ -46,6 +49,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				09F0BAF512B111F700CBCD8A /* CreditsViewController.h */,
+				09F0BAF612B111F700CBCD8A /* CreditsViewController.m */,
 				09F0BAF012B10C1700CBCD8A /* RootViewController.h */,
 				09F0BAF112B10C1700CBCD8A /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* PageDemoAppDelegate.h */,
@@ -163,6 +168,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* PageDemoAppDelegate.m in Sources */,
 				09F0BAF212B10C1700CBCD8A /* RootViewController.m in Sources */,
+				09F0BAF712B111F700CBCD8A /* CreditsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
