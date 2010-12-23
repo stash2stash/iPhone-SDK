@@ -24,7 +24,7 @@
                                                 target: self
                                                 action: @selector (prevpage)] autorelease];
         
-        self.navigationItem.leftBarButtonItem = prev;
+        self.navigationItem.leftBarœButtonItem = prev;
         
         next = [[[UIBarButtonItem alloc] initWithTitle: @"Next"
                                                  style: UIBarButtonItemStylePlain
@@ -33,7 +33,7 @@
         
         self.navigationItem.rightBarButtonItem = next;
     }
-    return self;
+    return self;œ
 }
 
 
