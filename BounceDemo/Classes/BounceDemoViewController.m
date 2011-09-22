@@ -18,22 +18,20 @@
     
     if (self != nil) {
 
-        NSURL *url = [NSURL URLWithString: @"http://www.ljplus.ru/img4/s/t/stash_stash/2.jpg"];
-        UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL: url]];
-        
-        image1 = [[UIImageView alloc] initWithImage: image];
+        // image1 getting from resources
+        image1 = [[UIImageView alloc] initWithImage: [UIImage imageNamed: @"2.jpg"]];
         directionImage1 = CGPointMake(-1.0, -1.0);
-        image1.layer.position = CGPointMake((image.size.width/2)+1, (image.size.width/2)+1);
+        image1.layer.position = CGPointMake((image1.image.size.width/2)+1, (image1.image.size.width/2)+1);
+        [self.view.layer addSublayer: image1.layer];
 
-        url = [NSURL URLWithString: @"http://www.ljplus.ru/img4/s/t/stash_stash/4.jpg"];
-        image = [UIImage imageWithData: [NSData dataWithContentsOfURL: url]];
+        // image2 getting from internet
+        NSURL *url = [NSURL URLWithString: @"http://www.ljplus.ru/img4/s/t/stash_stash/4.jpg"];
+        UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL: url]];
 
         image2 = [[UIImageView alloc] initWithImage: image];
         directionImage2 = CGPointMake(1.0, 1.0);
-        image2.layer.position = CGPointMake((image.size.width/2)+1, (image.size.width/2)+1);
-        
+        image2.layer.position = CGPointMake((image.size.width/2)+1, (image.size.width/2)+1+100);
         [self.view.layer addSublayer: image2.layer];
-        [self.view.layer addSublayer: image1.layer];
     }
     
     return self;
@@ -63,6 +61,7 @@
     anim1.cumulative = YES;
     anim1.repeatCount = 1000;
     [image1.layer addAnimation: anim1 forKey: @"transformAnimation"];
+   
 }
 
 
@@ -104,6 +103,7 @@
     origin.x += directionImage1.x;
     origin.y += directionImage1.y;
     image1.layer.position = origin;
+  
     
     // Moving image2
     size = [image2 image].size;
@@ -128,6 +128,7 @@
     
     [self.view setNeedsDisplayInRect: image1.layer.frame];
     [self.view setNeedsDisplayInRect: image2.layer.frame];
+    
 }
 
 

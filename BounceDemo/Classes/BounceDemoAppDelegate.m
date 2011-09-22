@@ -16,7 +16,7 @@
 {
     CGRect screenBounds = [[UIScreen alloc] applicationFrame];
     
-    window = [[[UIWindow alloc] initWithFrame: screenBounds] autorelease];
+    window = [[UIWindow alloc] initWithFrame: screenBounds];
     
     viewController = [[BounceDemoViewController alloc] init];
     
