@@ -12,7 +12,8 @@
 
 @interface GraphVipPViewController : UIViewController 
 {
- //   CALayer *gridLayer;
+    CALayer *gridLayer;
+    CALayer *dataLayer;
 }
 
 @end
