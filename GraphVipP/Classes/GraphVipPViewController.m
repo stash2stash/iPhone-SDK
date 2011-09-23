@@ -276,6 +276,40 @@ static int font_size = 10;
 }
 
 
+/*
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+}
+*/
+
+/*
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+ UITouch *touch;
+ 
+ NSEnumerator *enumerator = [touches objectEnumerator];
+ 
+ while ((touch = (UITouch *) [enumerator nextObject])) {
+ CGPoint location = [touch locationInView: self.view];
+ CGPoint oldLocation = [touch previousLocationInView: self.view];
+ 
+ double offset_x = (location.x - oldLocation.x);
+ 
+ min_x += offset_x;
+ }
+ 
+ [gridLayer setNeedsDisplay];
+ 
+}
+*/
+
+/*
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+}
+*/
+
 - (void)didReceiveMemoryWarning 
 {
     [super didReceiveMemoryWarning];
