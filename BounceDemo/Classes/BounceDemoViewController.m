@@ -25,12 +25,13 @@
         [self.view.layer addSublayer: image1.layer];
 
         // image2 getting from internet
-        NSURL *url = [NSURL URLWithString: @"http://www.ljplus.ru/img4/s/t/stash_stash/4.jpg"];
-        UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL: url]];
-
-        image2 = [[UIImageView alloc] initWithImage: image];
+        //NSURL *url = [NSURL URLWithString: @"http://www.ljplus.ru/img4/s/t/stash_stash/4.jpg"];
+        //UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL: url]];
+        image2 = [[UIImageView alloc] initWithImage: [UIImage imageNamed: @"4.jpg"]];
+        
+        //image2 = [[UIImageView alloc] initWithImage: image];
         directionImage2 = CGPointMake(1.0, 1.0);
-        image2.layer.position = CGPointMake((image.size.width/2)+1, (image.size.width/2)+1+100);
+        image2.layer.position = CGPointMake((image2.image.size.width/2)+1, (image2.image.size.width/2)+1+100);
         [self.view.layer addSublayer: image2.layer];
     }
     
