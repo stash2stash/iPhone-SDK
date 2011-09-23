@@ -10,11 +10,17 @@
 #import <QuartzCore/QuartzCore.h>
 
 
+
 @interface GraphVipPViewController : UIViewController 
 {
     CALayer *gridLayer;
     CALayer *dataLayer;
+
+    double min_x, max_x; // min & max values for X axis
+    double min_y, max_y; // min & max values for Y axis
 }
+
+
 
 @end
 
