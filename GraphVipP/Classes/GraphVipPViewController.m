@@ -43,8 +43,8 @@ static int font_size = 10;
     min_y = 20;
     max_y = 5 * 60;
     
-    min_x = 0;
-    max_x = 3.1415;
+    min_x = -10.1415;
+    max_x = 10.1415;
 }
 
 
