@@ -32,9 +32,13 @@
     double min_y, max_y; // min & max values for Y axis
     
     NSMutableArray *measurments; // Data to display
+    
+    NSTimer *timer; // Timer for adding new point to graph
 }
 
+- (void) handleTimer:(NSTimer *) timer;
 
+- (void) addDataPoint: (NSNumber *) measurment;
 
 @end
 

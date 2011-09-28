@@ -15,8 +15,10 @@
 - (void) applicationDidFinishLaunching:(UIApplication *)application
 {
     window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
+    
     viewController = [[GraphVipPViewController alloc] init];
 
+    
     [window addSubview: viewController.view];
     [window makeKeyAndVisible];
 
