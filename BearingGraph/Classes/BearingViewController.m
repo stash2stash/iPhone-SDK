@@ -23,6 +23,12 @@
     
     graphView = [[GraphView alloc] initWithFrame: frame];
     
+    graphView.min_y = 0;
+    graphView.max_y = 120;
+    
+    graphView.min_x = 0;
+    graphView.max_x = 360;
+    
     self.view = graphView;
     
 }

@@ -8,6 +8,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 
+// Just struct to store measurment
 @interface Measurment : NSObject
 {
     double value;
@@ -20,23 +21,24 @@
 @end
 
 
-// class for layers drawing
-@interface DrawLayerDelegate : NSObject
+// Class for layers drawing
+// NB: We can't set UIView class or his subclasses as delegate to draw layers, so
+// we need another class as delegate. This class will be call draw methods from
+// _view.
+@interface LayerDelegate : NSObject 
 {
-    CGRect gridLayerFrame;
-    CGRect dataLayerFrame;
+    UIView* _view; 
 }
 
-@property CGRect gridLayerFrame;
-@property CGRect dataLayerFrame;
+-(id) initWithView: (UIView*) view;
 
-@end
+@end;
 
 
 
 @interface GraphView : UIView 
 {
-    DrawLayerDelegate *drawLayerDelegate; // for correct layer draw
+    LayerDelegate *layerDelegate; // for correct layer draw
 
     CALayer *dataLayer;
     CALayer *gridLayer;
