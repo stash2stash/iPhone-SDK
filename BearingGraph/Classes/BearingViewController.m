@@ -11,28 +11,36 @@
 @implementation BearingViewController
 
 
-
--(void) viewDidLoad
+-(id) initWithCoder: (NSCoder *) aDecoder
 {
-    [super viewDidLoad];
-    
-    // Calculating height
-    CGRect frame = [[self view] bounds];
-    float tabBarHeight = [[[super tabBarController] tabBar] frame].size.height;
-    frame.size.height -= tabBarHeight;
-    
-    graphView = [[GraphView alloc] initWithFrame: frame];
-    
-    graphView.min_y = 0;
-    graphView.max_y = 120;
-    
-    graphView.min_x = 0;
-    graphView.max_x = 360;
-    
-    self.view = graphView;
-    
+    if (self = [super initWithCoder: aDecoder])
+    {
+        CGRect frame = [[self view] bounds];
+        float tabHeight = [[[super tabBarController] tabBar] frame].size.height;
+        
+        frame.size.height -= tabHeight;
+        
+        graphView = [[GraphView alloc] initWithFrame: frame];
+        self.view = graphView;
+        NSLog(@"%@", graphView);
+
+        graphView.min_y = 0;
+        graphView.max_y = 120;
+        
+        graphView.min_x = 0;
+        graphView.max_x = 360;
+    }
+
+    return self;
 }
 
+/*
+-(void) viewWillAppear:(BOOL)animated
+{
+    NSLog(@"%@", graphView);
+    
+}
+*/
 
 - (void)dealloc 
 {

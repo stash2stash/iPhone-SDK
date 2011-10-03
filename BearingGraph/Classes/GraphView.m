@@ -143,59 +143,71 @@ static int font_size = 10;
 }
 
 
-// Creating View, layers
-- (id)initWithFrame:(CGRect)frame 
+-(void) initSelf
 {
-    NSLog(@"Init in frame: (%.0f,%.0f)x(%.0f,%.0f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
-    
     min_x = max_x = min_y = max_y = 0;
     
-    if ((self = [super initWithFrame:frame])) 
-    {
-        NSLog (@"Init GraphView ... ");
+    NSLog(@"Init in frame: (%.0f,%.0f)x(%.0f,%.0f)", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    
+    measurments = [[NSMutableArray alloc] init];
+    
+    layerDelegate = [[LayerDelegate alloc] initWithView: self];
+    
+    
+    // Configuring base layer
+    self.layer.backgroundColor = [UIColor colorWithRed:249/255.0 green:237/255.0 blue:219/255.0 alpha:1.0].CGColor;
+    
+    // Making layer for grid
+    gridLayer = [CALayer layer];
+    gridLayer.frame = self.bounds;
+    gridLayer.backgroundColor = [UIColor colorWithWhite: 1.0 alpha: 0.0].CGColor;
+    gridLayer.frame = self.bounds;
+    
+    [self.layer addSublayer: gridLayer];
+    
+    // Making layer for data diagram
+    dataLayer = [CALayer layer];
+    
+    dataLayer.frame = CGRectMake(origin_left, 
+                                 origin_up, 
+                                 gridLayer.bounds.size.width - (origin_left + origin_right), 
+                                 gridLayer.bounds.size.height - (origin_up + origin_down));
+    
+    dataLayer.backgroundColor = [UIColor colorWithWhite: 1.0 alpha: 0.0].CGColor;
+    
+    dataLayer.shadowColor = [UIColor blackColor].CGColor;
+    dataLayer.shadowOffset = CGSizeMake(0, 3);
+    dataLayer.shadowOpacity = 0.8;
+    dataLayer.shadowRadius = 5;
+    
+    [gridLayer addSublayer: dataLayer];
+    
+    
+    // Names need to be set for drawing
+    dataLayer.name = @"Data";
+    gridLayer.name = @"Grid";
+    
+    dataLayer.delegate = layerDelegate;
+    gridLayer.delegate = layerDelegate;
+    
+    [self calculateScale];
+}
 
-        measurments = [[NSMutableArray alloc] init];
-        
-        layerDelegate = [[LayerDelegate alloc] initWithView: self];
-        
 
-        // Configuring base layer
-        self.layer.backgroundColor = [UIColor colorWithRed:249/255.0 green:237/255.0 blue:219/255.0 alpha:1.0].CGColor;
-        
-        // Making layer for grid
-        gridLayer = [CALayer layer];
-        gridLayer.frame = self.bounds;
-        gridLayer.backgroundColor = [UIColor colorWithWhite: 1.0 alpha: 0.0].CGColor;
-        
-        [self.layer addSublayer: gridLayer];
-        
-        // Making layer for data diagram
-        dataLayer = [CALayer layer];
-        
-        dataLayer.frame = CGRectMake(origin_left, 
-                                     origin_up, 
-                                     gridLayer.bounds.size.width - (origin_left + origin_right), 
-                                     gridLayer.bounds.size.height - (origin_up + origin_down));
-        
-        dataLayer.backgroundColor = [UIColor colorWithWhite: 1.0 alpha: 0.0].CGColor;
+-(id) initWithCoder:(NSCoder *)aDecoder
+{
+    if ([super initWithCoder: aDecoder])
+        [self initSelf];
+    
+    return self;
+}
 
-        dataLayer.shadowColor = [UIColor blackColor].CGColor;
-        dataLayer.shadowOffset = CGSizeMake(0, 3);
-        dataLayer.shadowOpacity = 0.8;
-        dataLayer.shadowRadius = 5;
-        
-        [gridLayer addSublayer: dataLayer];
-        
-        
-        // Names need to be set for drawing
-        dataLayer.name = @"Data";
-        gridLayer.name = @"Grid";
-        
-        dataLayer.delegate = layerDelegate;
-        gridLayer.delegate = layerDelegate;
-        
-        [self calculateScale];
-    }
+
+-(id) initWithFrame: (CGRect) frame
+{
+    if ([super initWithFrame: frame])
+        [self initSelf];
+    
     return self;
 }
 
@@ -301,8 +313,13 @@ static int font_size = 10;
                 CGContextSetAllowsAntialiasing(ctx, true);
                 
                 NSString *dataLabel = [NSString stringWithFormat: @"%.1f", i*scale_x];
-                
+
                 CGSize textSize = [dataLabel sizeWithFont: [UIFont systemFontOfSize: font_size]];
+
+                // if text don't fit in layer
+                if ((x + textSize.width/2) > gridLayer.bounds.size.width)
+                    x = gridLayer.bounds.size.width - textSize.width/2;
+                
                 [dataLabel drawInRect: CGRectMake(x-textSize.width/2, 
                                                   [dataLayer bounds].size.height + origin_up + origin_axis, 
                                                   textSize.width, 
@@ -373,11 +390,13 @@ static int font_size = 10;
             CGContextStrokePath(ctx);
         }
         
-    } // X axies
+    } // end X axies
     
     
     //----- Y axies ----------
     {
+        CGContextSetLineDash(ctx, 0, 0, 0);
+        
         // Finding scale
         NSArray *scale_y_array = [NSArray arrayWithObjects: 
                                   [NSNumber numberWithDouble: 1.0], 
