@@ -15,6 +15,6 @@
 }
 
 
-
+@property (nonatomic, retain) GraphView *graphView;
 
 @end

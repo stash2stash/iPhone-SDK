@@ -11,8 +11,12 @@
 		095ED2491434955A004A4800 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095ED2481434955A004A4800 /* QuartzCore.framework */; };
 		09770CDB1435C43D00615653 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09770CDA1435C43D00615653 /* GraphView.m */; };
 		09770CFC1435C43D00615653 /* BearingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09770CFB1435C43D00615653 /* BearingViewController.m */; };
+		097D7DED143B156200D9D69B /* MovingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 097D7DEC143B156200D9D69B /* MovingObject.m */; };
+		097D7DFB143B18B800D9D69B /* OptionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 097D7DFA143B18B800D9D69B /* OptionsData.m */; };
 		09A1663914398A4100FAF772 /* BCVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A1663814398A4100FAF772 /* BCVViewController.m */; };
 		09A166661439904700FAF772 /* BCVView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A166651439904700FAF772 /* BCVView.xib */; };
+		09A31DDF143B1C680077EF7F /* Functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 09A31DDE143B1C680077EF7F /* Functions.c */; };
+		09A31E0D143B28300077EF7F /* NavyFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A31E0C143B28300077EF7F /* NavyFunctions.m */; };
 		09A67D0814348848005CA3A0 /* OptionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A67D0714348848005CA3A0 /* OptionsView.xib */; };
 		1D3623260D0F684500981E51 /* BearingGraphAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* BearingGraphAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -30,9 +34,17 @@
 		09770CDA1435C43D00615653 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		09770CFA1435C43D00615653 /* BearingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BearingViewController.h; sourceTree = "<group>"; };
 		09770CFB1435C43D00615653 /* BearingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BearingViewController.m; sourceTree = "<group>"; };
+		097D7DEB143B156200D9D69B /* MovingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingObject.h; sourceTree = "<group>"; };
+		097D7DEC143B156200D9D69B /* MovingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovingObject.m; sourceTree = "<group>"; };
+		097D7DF9143B18B800D9D69B /* OptionsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsData.h; sourceTree = "<group>"; };
+		097D7DFA143B18B800D9D69B /* OptionsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsData.m; sourceTree = "<group>"; };
 		09A1663714398A4100FAF772 /* BCVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCVViewController.h; sourceTree = "<group>"; };
 		09A1663814398A4100FAF772 /* BCVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCVViewController.m; sourceTree = "<group>"; };
 		09A166651439904700FAF772 /* BCVView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BCVView.xib; sourceTree = "<group>"; };
+		09A31DDE143B1C680077EF7F /* Functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Functions.c; sourceTree = "<group>"; };
+		09A31DE0143B1C930077EF7F /* Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
+		09A31E0B143B28300077EF7F /* NavyFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavyFunctions.h; sourceTree = "<group>"; };
+		09A31E0C143B28300077EF7F /* NavyFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavyFunctions.m; sourceTree = "<group>"; };
 		09A67D0714348848005CA3A0 /* OptionsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsView.xib; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* BearingGraphAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BearingGraphAppDelegate.h; sourceTree = "<group>"; };
@@ -74,6 +86,14 @@
 				09770CFB1435C43D00615653 /* BearingViewController.m */,
 				09A1663714398A4100FAF772 /* BCVViewController.h */,
 				09A1663814398A4100FAF772 /* BCVViewController.m */,
+				097D7DEB143B156200D9D69B /* MovingObject.h */,
+				097D7DEC143B156200D9D69B /* MovingObject.m */,
+				097D7DF9143B18B800D9D69B /* OptionsData.h */,
+				097D7DFA143B18B800D9D69B /* OptionsData.m */,
+				09A31DDE143B1C680077EF7F /* Functions.c */,
+				09A31DE0143B1C930077EF7F /* Functions.h */,
+				09A31E0B143B28300077EF7F /* NavyFunctions.h */,
+				09A31E0C143B28300077EF7F /* NavyFunctions.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -197,6 +217,10 @@
 				09770CDB1435C43D00615653 /* GraphView.m in Sources */,
 				09770CFC1435C43D00615653 /* BearingViewController.m in Sources */,
 				09A1663914398A4100FAF772 /* BCVViewController.m in Sources */,
+				097D7DED143B156200D9D69B /* MovingObject.m in Sources */,
+				097D7DFB143B18B800D9D69B /* OptionsData.m in Sources */,
+				09A31DDF143B1C680077EF7F /* Functions.c in Sources */,
+				09A31E0D143B28300077EF7F /* NavyFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

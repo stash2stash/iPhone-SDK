@@ -5,7 +5,7 @@
 //--------------------------------------------------------------------------
 
 #import "OptionsViewController.h"
-
+#import "Functions.h"
 
 
 @implementation OptionsViewController
@@ -26,6 +26,45 @@
 @synthesize targetText_b;
 @synthesize targetText_d;
 
+@synthesize shipSlider_c;
+@synthesize shipSlider_v;
+@synthesize targetSlider_c;
+@synthesize targetSlider_v;
+@synthesize targetSlider_b;
+@synthesize targetSlider_d;
+
+
+-(void) onUpdateOptions
+{
+    if (nil == options) {
+        return;
+    }
+    
+    //NSLog (@"options:");
+    //NSLog (@"   ship_c: %.1f", options.ship_c);
+    //NSLog (@"   ship_v: %.1f", options.ship_v);
+    //NSLog (@"   target_c: %.1f", options.target_c);
+    //NSLog (@"   target_v: %.1f", options.target_v);
+    //NSLog (@"   target_b: %.1f", options.target_b);
+    //NSLog (@"   target_d: %.1f", options.target_d);
+    
+    shipText_c.text = [NSString stringWithFormat: @"%.0f", radToDeg (options.ship_c)];
+    shipText_v.text = [NSString stringWithFormat: @"%.0f", mpsToUz (options.ship_v)];
+    targetText_c.text = [NSString stringWithFormat: @"%.0f", radToDeg (options.target_c)];
+    targetText_v.text = [NSString stringWithFormat: @"%.0f", mpsToUz (options.target_v)];
+    targetText_b.text = [NSString stringWithFormat: @"%.0f", radToDeg(options.target_b)];
+    targetText_d.text = [NSString stringWithFormat: @"%.0f", mToKab (options.target_d)];
+    
+    shipSlider_c.value = radToDeg (options.ship_c);
+    shipSlider_v.value = mpsToUz (options.ship_v);
+    targetSlider_c.value = radToDeg (options.target_c);
+    targetSlider_v.value = mpsToUz (options.target_v);
+    targetSlider_b.value = radToDeg (options.target_b);
+    targetSlider_d.value = mToKab (options.target_d);
+    
+    
+}
+
 
 -(void)viewDidLoad
 {
@@ -39,6 +78,7 @@
     [targetCell_d setSelectionStyle:UITableViewCellSelectionStyleNone];
     [targetCell_mse setSelectionStyle:UITableViewCellSelectionStyleNone];
     
+    [self onUpdateOptions];
 }
 
 
@@ -111,6 +151,8 @@
 {
     UISlider *slider = sender;
     shipText_c.text = [NSString stringWithFormat: @"%.0f", slider.value];
+    
+    options.ship_c = degToRad (slider.value);
 }
 
 
@@ -118,6 +160,8 @@
 {
     UISlider *slider = sender;
     shipText_v.text = [NSString stringWithFormat: @"%.0f", slider.value];
+    
+    options.ship_v = uzToMps (slider.value);
 }
 
 
@@ -125,6 +169,8 @@
 {
     UISlider *slider = sender;
     targetText_c.text = [NSString stringWithFormat: @"%.0f", slider.value];
+    
+    options.target_c = degToRad (slider.value);
 }
 
 
@@ -132,6 +178,8 @@
 {
     UISlider *slider = sender;
     targetText_v.text = [NSString stringWithFormat: @"%.0f", slider.value];
+    
+    options.target_v = uzToMps (slider.value);
 }
 
 
@@ -139,6 +187,8 @@
 {
     UISlider *slider = sender;
     targetText_b.text = [NSString stringWithFormat: @"%.0f", slider.value];
+    
+    options.target_b = degToRad (slider.value);
 }
 
 
@@ -146,8 +196,21 @@
 {
     UISlider *slider = sender;
     targetText_d.text = [NSString stringWithFormat: @"%.0f", slider.value];
+    
+    options.target_d = kabToM (slider.value);
 }
 
+
+-(void) setOptions:(OptionsData *)optionsData
+{
+    if (optionsData != options) {
+        options = optionsData;
+
+        if ([self isViewLoaded]) {
+            [self onUpdateOptions];
+        }
+    }
+}
 
 
 - (void)viewDidUnload 
