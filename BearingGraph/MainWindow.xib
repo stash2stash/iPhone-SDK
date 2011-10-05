@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="106"/>
+			<integer value="109"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -63,16 +63,14 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
-				<object class="IBUIViewController" key="IBUISelectedViewController" id="994121518">
-					<string key="IBUITitle">Options</string>
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="571903032">
-						<string key="IBUITitle">Options</string>
+				<object class="IBUIViewController" key="IBUISelectedViewController" id="268481961">
+					<string key="IBUITitle">BCV</string>
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="807309489">
+						<string key="IBUITitle">BCV</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<reference key="IBUITabBar"/>
 					</object>
-					<reference key="IBUIToolbarItems" ref="0"/>
 					<reference key="IBUIParentViewController" ref="1034742383"/>
-					<string key="IBUINibName">OptionsView</string>
 					<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 						<int key="interfaceOrientation">1</int>
 					</object>
@@ -89,28 +87,29 @@
 							<reference key="IBUITabBar"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
-						<string key="IBUINibName">BCVView</string>
 						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 							<int key="interfaceOrientation">1</int>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIHorizontal">NO</bool>
 					</object>
-					<object class="IBUIViewController" id="268481961">
-						<string key="IBUITitle">BCV</string>
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="807309489">
-							<string key="IBUITitle">BCV</string>
+					<reference ref="268481961"/>
+					<object class="IBUIViewController" id="994121518">
+						<string key="IBUITitle">Options</string>
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="571903032">
+							<string key="IBUITitle">Options</string>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<reference key="IBUITabBar"/>
 						</object>
+						<reference key="IBUIToolbarItems" ref="0"/>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
+						<string key="IBUINibName">OptionsView</string>
 						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 							<int key="interfaceOrientation">1</int>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIHorizontal">NO</bool>
 					</object>
-					<reference ref="994121518"/>
 				</object>
 				<object class="IBUITabBar" key="IBUITabBar" id="795333663">
 					<nil key="NSNextResponder"/>
@@ -281,7 +280,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIApplication</string>
 					<string>UIResponder</string>
-					<string>{{364, 177}, {320, 480}}</string>
+					<string>{{309, 366}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>BearingViewController</string>
@@ -320,7 +319,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">127</int>
+			<int key="maxID">128</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -476,6 +475,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>shipCell_c</string>
 							<string>shipCell_v</string>
+							<string>shipSlider_c</string>
+							<string>shipSlider_v</string>
 							<string>shipText_c</string>
 							<string>shipText_v</string>
 							<string>targetCell_b</string>
@@ -483,6 +484,10 @@
 							<string>targetCell_d</string>
 							<string>targetCell_mse</string>
 							<string>targetCell_v</string>
+							<string>targetSlider_b</string>
+							<string>targetSlider_c</string>
+							<string>targetSlider_d</string>
+							<string>targetSlider_v</string>
 							<string>targetText_b</string>
 							<string>targetText_c</string>
 							<string>targetText_d</string>
@@ -492,6 +497,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UITableViewCell</string>
 							<string>UITableViewCell</string>
+							<string>UISlider</string>
+							<string>UISlider</string>
 							<string>UITextField</string>
 							<string>UITextField</string>
 							<string>UITableViewCell</string>
@@ -499,6 +506,10 @@
 							<string>UITableViewCell</string>
 							<string>UITableViewCell</string>
 							<string>UITableViewCell</string>
+							<string>UISlider</string>
+							<string>UISlider</string>
+							<string>UISlider</string>
+							<string>UISlider</string>
 							<string>UITextField</string>
 							<string>UITextField</string>
 							<string>UITextField</string>
@@ -511,6 +522,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>shipCell_c</string>
 							<string>shipCell_v</string>
+							<string>shipSlider_c</string>
+							<string>shipSlider_v</string>
 							<string>shipText_c</string>
 							<string>shipText_v</string>
 							<string>targetCell_b</string>
@@ -518,6 +531,10 @@
 							<string>targetCell_d</string>
 							<string>targetCell_mse</string>
 							<string>targetCell_v</string>
+							<string>targetSlider_b</string>
+							<string>targetSlider_c</string>
+							<string>targetSlider_d</string>
+							<string>targetSlider_v</string>
 							<string>targetText_b</string>
 							<string>targetText_c</string>
 							<string>targetText_d</string>
@@ -532,6 +549,14 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">shipCell_v</string>
 								<string key="candidateClassName">UITableViewCell</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">shipSlider_c</string>
+								<string key="candidateClassName">UISlider</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">shipSlider_v</string>
+								<string key="candidateClassName">UISlider</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">shipText_c</string>
@@ -560,6 +585,22 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">targetCell_v</string>
 								<string key="candidateClassName">UITableViewCell</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">targetSlider_b</string>
+								<string key="candidateClassName">UISlider</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">targetSlider_c</string>
+								<string key="candidateClassName">UISlider</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">targetSlider_d</string>
+								<string key="candidateClassName">UISlider</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">targetSlider_v</string>
+								<string key="candidateClassName">UISlider</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">targetText_b</string>
@@ -743,6 +784,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">UIKit.framework/Headers/UISearchDisplayController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UISlider</string>
+					<string key="superclassName">UIControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">UIKit.framework/Headers/UISlider.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

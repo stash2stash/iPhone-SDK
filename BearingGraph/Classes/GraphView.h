@@ -46,14 +46,34 @@
     double min_x, max_x;
     double min_y, max_y;
     
+    double minimum_min_x, minimum_max_x;
+    double minimum_min_y, minimum_max_y;
+    
+    double maximum_min_x, maximum_max_x;
+    double maximum_min_y, maximum_max_y;
+    
+    BOOL limit_maximum_x, limit_maximum_y;
+    BOOL limit_minimum_x, limit_minimum_y; 
+    
     NSMutableArray *measurments; // Data to display
 }
 
 
-@property double min_x;
-@property double max_x;
-@property double min_y;
-@property double max_y;
+@property double minimum_min_x;
+@property double minimum_max_x;
+@property double minimum_min_y;
+@property double minimum_max_y;
+
+@property double maximum_min_x;
+@property double maximum_max_x;
+@property double maximum_min_y;
+@property double maximum_max_y;
+
+
+@property BOOL limit_maximum_x;
+@property BOOL limit_maximum_y;
+@property BOOL limit_minimum_x;
+@property BOOL limit_minimum_y; 
 
 
 - (void) addPoint: (NSNumber *) measurment;

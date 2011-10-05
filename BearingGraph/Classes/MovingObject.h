@@ -22,7 +22,7 @@
 @property CGPoint position;
 
 
--(id) initWithPosition: (CGPoint) startPosition;
+-(id) initWithPosition: (CGPoint) startPosition course: (double)course velocity: (double) velocity;
 -(void) extrapolateWithTimeInterval: (int) timeInterval;
 
 

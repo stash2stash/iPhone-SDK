@@ -17,12 +17,21 @@
 -(void) viewDidLoad
 {
     [super viewDidLoad];
+
+    // set scale limiters
+    graphView.minimum_min_x = -3;
+    graphView.minimum_max_x = 3;
+    graphView.minimum_min_y = 0;
+    graphView.minimum_max_y = 120;
     
-    graphView.min_y = 0;
-    graphView.max_y = 120;
+    //graphView.maximum_min_x = -180;
+    //graphView.maximum_max_x = 180;
+    graphView.maximum_min_y = 0;
+    graphView.maximum_max_y = 120;
     
-    graphView.min_x = -3;
-    graphView.max_x = 3;
+    graphView.limit_minimum_y = TRUE;
+    graphView.limit_maximum_y = TRUE;
+    graphView.limit_minimum_x = TRUE;
     
 }
 

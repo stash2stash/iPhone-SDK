@@ -18,6 +18,8 @@ static int max_lines_y = 10;
 
 static int font_size = 10;
 
+static int max_measurments = 130;
+
 
 @implementation Measurment
 
@@ -58,10 +60,20 @@ static int font_size = 10;
 
 @implementation GraphView
 
-@synthesize min_x;
-@synthesize max_x;
-@synthesize min_y;
-@synthesize max_y;
+@synthesize minimum_min_x;
+@synthesize minimum_max_x;
+@synthesize minimum_min_y;
+@synthesize minimum_max_y;
+
+@synthesize maximum_min_x;
+@synthesize maximum_max_x;
+@synthesize maximum_min_y;
+@synthesize maximum_max_y;
+
+@synthesize limit_maximum_x;
+@synthesize limit_maximum_y;
+@synthesize limit_minimum_x;
+@synthesize limit_minimum_y; 
 
 
 // Calculate min & max scale for X and Y
@@ -69,6 +81,12 @@ static int font_size = 10;
 {
     NSEnumerator *enumerator = [measurments objectEnumerator];
     Measurment *anMeasurment;
+    
+    // reset scales
+    min_x = 10000000;
+    min_y = 10000000;
+    max_x = -10000000;
+    max_y = -10000000;
     
     while (anMeasurment = [enumerator nextObject]) {
         if (min_x > anMeasurment.value) {
@@ -79,13 +97,46 @@ static int font_size = 10;
             max_x = anMeasurment.value;
         }
         
-        if (min_y > anMeasurment.time) {
-            min_y = anMeasurment.time;
+        if (min_y > time(0) - anMeasurment.time) {
+            min_y = time(0) - anMeasurment.time;
         }
         
-        if (max_y < anMeasurment.time) {
-            max_y = anMeasurment.time;
+        if (max_y < time(0) - anMeasurment.time) {
+            max_y = time(0) - anMeasurment.time;
         }
+        
+    }
+    
+    if (limit_minimum_x) {
+        if (min_x > minimum_min_x) 
+            min_x = minimum_min_x;
+
+        if (max_x < minimum_max_x) 
+            max_x = minimum_max_x;
+    }
+    
+    if (limit_minimum_y) {
+        if (min_y > minimum_min_y) 
+            min_y = minimum_min_y;
+    
+        if (max_y < minimum_max_y) 
+            max_y = minimum_max_y;
+    }
+
+    if (limit_maximum_x) {
+        if (min_x < maximum_min_x) 
+            min_x = maximum_min_x;
+
+        if (max_x > maximum_max_x) 
+            max_x = maximum_max_x;
+    }
+    
+    if (limit_maximum_y) {
+        if (min_y < maximum_min_y) 
+            min_y = maximum_min_y;
+    
+        if (max_y > maximum_max_y) 
+            max_y = maximum_max_y;
     }
     
     [dataLayer setNeedsDisplay];
@@ -145,7 +196,24 @@ static int font_size = 10;
 
 -(void) initSelf
 {
-    min_x = max_x = min_y = max_y = 0;
+    // set default scale limiter
+    minimum_min_x = 10000000;
+    minimum_max_x = -10000000;
+    
+    minimum_min_y = 10000000;
+    minimum_max_y = -10000000;
+    
+    maximum_min_x = -10000000;
+    maximum_max_x = 10000000;
+    
+    maximum_min_y = -10000000;
+    maximum_max_y = 10000000;
+    
+    limit_maximum_x = FALSE;
+    limit_maximum_y = FALSE;
+    limit_minimum_x = FALSE;
+    limit_minimum_y = FALSE; 
+    
     
     NSLog(@"Init in frame: (%.0f,%.0f)x(%.0f,%.0f)", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
     
@@ -175,10 +243,10 @@ static int font_size = 10;
     
     dataLayer.backgroundColor = [UIColor colorWithWhite: 1.0 alpha: 0.0].CGColor;
     
-    dataLayer.shadowColor = [UIColor blackColor].CGColor;
-    dataLayer.shadowOffset = CGSizeMake(0, 3);
-    dataLayer.shadowOpacity = 0.8;
-    dataLayer.shadowRadius = 5;
+    //dataLayer.shadowColor = [UIColor blackColor].CGColor;
+    //dataLayer.shadowOffset = CGSizeMake(0, 3);
+    //dataLayer.shadowOpacity = 0.8;
+    //dataLayer.shadowRadius = 5;
     
     [gridLayer addSublayer: dataLayer];
     
@@ -196,6 +264,8 @@ static int font_size = 10;
 
 -(id) initWithCoder:(NSCoder *)aDecoder
 {
+    //NSLog(@"Init with coder");
+    
     if ([super initWithCoder: aDecoder])
         [self initSelf];
     
@@ -205,6 +275,8 @@ static int font_size = 10;
 
 -(id) initWithFrame: (CGRect) frame
 {
+    //NSLog(@"Init with frame");
+    
     if ([super initWithFrame: frame])
         [self initSelf];
     
@@ -237,6 +309,12 @@ static int font_size = 10;
 
     [measurments addObject: new_measurment];
     
+    if ([measurments count] >= max_measurments) {
+        [measurments removeObjectAtIndex: 0];
+    }
+    
+    //NSLog(@"new point: %.2f", new_measurment.value);
+    
     [self calculateScale];
 }
 
@@ -244,7 +322,7 @@ static int font_size = 10;
 
 -(void) drawGridLayer:(CALayer*)layer inContext:(CGContextRef)ctx
 {
-    NSLog (@"Draw GRID layer");
+    //NSLog (@"Draw GRID layer");
     
     CGContextSetLineWidth(ctx, 1);
     CGContextSetStrokeColorWithColor(ctx, [UIColor blackColor].CGColor);
@@ -494,7 +572,7 @@ static int font_size = 10;
 
 -(void) drawDataLayer: (CALayer *) layer inContext: (CGContextRef) ctx
 {
-    NSLog(@"Draw DATA layer");
+    //NSLog(@"Draw DATA layer");
 
     // No data - return
     if ([measurments count] <= 0)
