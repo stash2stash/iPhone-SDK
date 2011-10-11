@@ -33,6 +33,8 @@
 @synthesize targetSlider_b;
 @synthesize targetSlider_d;
 
+@synthesize targetMse;
+
 
 -(void) onUpdateOptions
 {
@@ -62,6 +64,7 @@
     targetSlider_b.value = [NavyFunctions radToDeg: options.target_b];
     targetSlider_d.value = [NavyFunctions mToKab: options.target_d];
     
+    [targetMse setSelectedSegmentIndex: options.target_mse];
 }
 
 
@@ -203,6 +206,12 @@
     targetText_d.text = [NSString stringWithFormat: @"%.0f", slider.value];
     
     options.target_d = [NavyFunctions kabToM: slider.value];
+}
+
+
+-(IBAction) mseValueChanged: (id)sender
+{
+    options.target_mse = targetMse.selectedSegmentIndex;
 }
 
 

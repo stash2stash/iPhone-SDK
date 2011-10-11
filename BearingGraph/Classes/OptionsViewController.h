@@ -34,6 +34,7 @@
     UISlider *targetSlider_b;
     UISlider *targetSlider_d;
     
+    UISegmentedControl *targetMse;
     
     OptionsData *options;
 }
@@ -64,11 +65,14 @@
 @property (nonatomic, retain) IBOutlet UISlider *targetSlider_b;
 @property (nonatomic, retain) IBOutlet UISlider *targetSlider_d;
 
+@property (nonatomic, retain) IBOutlet UISegmentedControl *targetMse;
+
 -(IBAction) sliderValueChanged_ship_c: (id)sender;
 -(IBAction) sliderValueChanged_ship_v: (id)sender;
 -(IBAction) sliderValueChanged_target_c: (id)sender;
 -(IBAction) sliderValueChanged_target_v: (id)sender;
 -(IBAction) sliderValueChanged_target_b: (id)sender;
 -(IBAction) sliderValueChanged_target_d: (id)sender;
+-(IBAction) mseValueChanged: (id)sender;
 
 @end

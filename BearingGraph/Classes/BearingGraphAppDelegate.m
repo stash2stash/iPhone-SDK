@@ -118,7 +118,7 @@
         last_time = time (0);
     }
     
-    int delta_time = time (0) - last_time;
+    long int delta_time = time (0) - last_time;
     
     if (delta_time <= 0) {
         NSLog(@"Wrong delta time: %d", delta_time);
@@ -135,8 +135,18 @@
     // add bearing point
     double bearing = [NavyFunctions getBearingFromPosition: ship.position toPosition: target.position];
     
-    //bearing = [NavyFunctions radToDeg: bearing];
+   
+    // appling error (using MSE)
+    static const double errors [4] = {0.0, 0.1, 0.2, 0.3};
+    //static const double errors [4] = {0.0, 1.0, 2.0, 3.0};
+    
+    double err = 2 * 3 * errors [options.target_mse] * ((arc4random ()%100) / 100.0) - 3 * errors [options.target_mse];
 
+    bearing += [NavyFunctions degToRad: err];
+
+    //NSLog(@"Error: %.2f", err);
+
+    
     [bearingGraph addPoint: [NSNumber numberWithDouble: [NavyFunctions radToDeg: bearing]]];
     
     

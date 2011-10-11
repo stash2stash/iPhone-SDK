@@ -32,7 +32,7 @@
     double target_v;
     double target_b;
     double target_d;
-    double target_mse;
+    int target_mse; // Store only identifier (0, 1, ...)
     
     id <OptionsDataProtocol> delegate;
 }
@@ -45,7 +45,7 @@
 @property double target_v;
 @property double target_b;
 @property double target_d;
-@property double target_mse;
+@property int target_mse;
 
 @property (nonatomic, retain) id delegate;
 
