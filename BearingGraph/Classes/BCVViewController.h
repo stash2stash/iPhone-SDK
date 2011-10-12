@@ -12,12 +12,12 @@
 @interface BCVViewController : UIViewController 
 {
     GraphView *graphView;
-    //UISegmentedControl *segmentedControl;
+    UISegmentedControl *segmentedControl;
 }
 
 
 @property (nonatomic, retain) IBOutlet GraphView *graphView;
-//@property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
 
 
 @end

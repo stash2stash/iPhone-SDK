@@ -11,7 +11,7 @@
 @implementation BCVViewController
 
 @synthesize graphView;
-//@synthesize segmentedControl;
+@synthesize segmentedControl;
 
 
 -(void) viewDidLoad

@@ -27,12 +27,16 @@
     
     GraphView *bearingGraph;
     GraphView *bcvGraph;
+    
+    UISegmentedControl *aliasing_level;
 }
 
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet OptionsViewController *optionsViewController;
+
+@property (nonatomic, retain) IBOutlet UISegmentedControl *aliasing_level;
 
 
 -(void) handleTimer: (NSTimer *) timer;

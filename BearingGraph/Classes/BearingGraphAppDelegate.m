@@ -17,6 +17,7 @@
 @synthesize window;
 @synthesize tabBarController;
 @synthesize optionsViewController;
+@synthesize aliasing_level;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
@@ -39,7 +40,6 @@
     
     [optionsViewController setOptions: options];
 
-    
     // init objects
     ship = [[MovingObject alloc] initWithPosition: CGPointMake (0.0, 0.0) course: options.ship_c velocity: options.ship_v];
     
@@ -53,18 +53,20 @@
     // init graphs
     
     BearingViewController *bearingViewController = [tabBarController.viewControllers objectAtIndex: 0];
+    BCVViewController *bcvViewController = [tabBarController.viewControllers objectAtIndex: 1];
 
     // force load graph
     // NB: It's very bad idea, keep data in visual class, 
     //     in future we need two classes: for data and for visualization!
     bearingViewController.view;
+    bcvViewController.view;
     
     bearingGraph = bearingViewController.graphView; 
-
-    
-    BCVViewController *bcvViewController = [tabBarController.viewControllers objectAtIndex: 1];
-    bcvViewController.view;
     bcvGraph = bcvViewController.graphView; 
+   
+    
+    aliasing_level = bcvViewController.segmentedControl;
+    
     
     timer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
     
@@ -111,7 +113,7 @@
 -(void) handleTimer:(NSTimer *)timer
 {
     static time_t last_time = 0;
-    static double prev_bearing = -1;
+    //static double prev_bearing = -1;
     
     
     if (0 == last_time) {
@@ -131,45 +133,55 @@
     [ship extrapolateWithTimeInterval: delta_time];
     [target extrapolateWithTimeInterval: delta_time];
     
-    
     // add bearing point
     double bearing = [NavyFunctions getBearingFromPosition: ship.position toPosition: target.position];
     
-   
     // appling error (using MSE)
     static const double errors [4] = {0.0, 0.1, 0.2, 0.3};
-    //static const double errors [4] = {0.0, 1.0, 2.0, 3.0};
     
     double err = 2 * 3 * errors [options.target_mse] * ((arc4random ()%100) / 100.0) - 3 * errors [options.target_mse];
 
     bearing += [NavyFunctions degToRad: err];
 
-    //NSLog(@"Error: %.2f", err);
 
-    
+    // Add bearing point to graph
     [bearingGraph addPoint: [NSNumber numberWithDouble: [NavyFunctions radToDeg: bearing]]];
     
     
     // add BVC point
-    if (prev_bearing < 0) {
-        prev_bearing = bearing;
-        return;
-    }
+    double bcv = 0;
+    //                                  last  -1 sec -2 sec
+    static double prev_bearings [5] = {-1.0, -1.0, -1.0, -1.0, -1.0};
     
-    if (fabs(bearing - prev_bearing) > M_PI) {
-        if (prev_bearing < M_PI) {
-            prev_bearing += 2 * M_PI;
-        }
-        else {
-            prev_bearing -= 2* M_PI;
-        }
+    int aliasing = aliasing_level.selectedSegmentIndex;
+    
+    for (int i=aliasing; i>=0; --i){
+        if (prev_bearings[i] >= 0) {
+            bcv = (bearing - prev_bearings [i]);
 
+            if (fabs(bcv) > M_PI) {
+                bcv = bcv - 2*M_PI;
+            }
+            
+            if (i != 0)
+                bcv /= i;
+            
+            break;
+        }
     }
     
     
-    [bcvGraph addPoint: [NSNumber numberWithDouble: [NavyFunctions radToDeg: (bearing - prev_bearing)]]];
+    // if it's a first point, skip it
+    if (prev_bearings[0]!=-1)
+        [bcvGraph addPoint: [NSNumber numberWithDouble: [NavyFunctions radToDeg: bcv]]];
     
-    prev_bearing = bearing;
+    // array shift
+    for (int i=4; i>0; i--) {
+        prev_bearings[i] = prev_bearings[i-1];
+    }
+        
+    prev_bearings[0] = bearing;
+    
     
     //NSLog(@"Ship: %@", ship);
     //NSLog(@"Target: %@", target);
